@@ -1,0 +1,4 @@
+machines:
+  "Arduino SA,Imola":
+    DSP_LIBRARY_PATH: "../dsp"
+    ADSP_ARCH: "v66"

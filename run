@@ -1,0 +1,27 @@
+#!/bin/sh
+set -eu
+root=$(CDPATH= cd -- "$(dirname -- "$0")" && pwd)
+if [ "$(id -u)" -ne 0 ]; then exec sudo -- "$root/run" "$@"; fi
+[ -c /dev/fastrpc-adsp ] || { echo 'Enable the DSP first: docs/SETUP.md' >&2; exit 1; }
+[ -x "$root/.venv/bin/python" ] || { echo 'Run ./scripts/install.sh first.' >&2; exit 1; }
+exec 9>/run/unoq-dsp-test.lock
+flock -w 10 9
+export LD_LIBRARY_PATH=/opt/unoq-dsp/lib
+export DSP_LIBRARY_PATH=/opt/unoq-dsp/dsp
+export ADSP_LIBRARY_PATH=/opt/unoq-dsp/dsp
+export UNOQ_DSP_LIBRARY=/opt/unoq-dsp/lib/libuno_backend.so
+export PATH="$root/.venv/bin:$PATH"
+log=$(mktemp /tmp/unoq-dsp-listener.XXXXXX)
+/opt/unoq-dsp/bin/adsprpcd >"$log" 2>&1 &
+listener=$!
+cleanup() { kill "$listener" 2>/dev/null || true; wait "$listener" 2>/dev/null || true; rm -f "$log"; }
+trap cleanup EXIT
+trap 'exit 130' INT
+trap 'exit 143' TERM
+sleep 1
+if ! kill -0 "$listener" 2>/dev/null; then cat "$log" >&2; exit 1; fi
+if [ "$#" -eq 0 ]; then set -- python; fi
+status=0
+"$@" || status=$?
+if [ "$status" -ne 0 ]; then cat "$log" >&2; fi
+exit "$status"

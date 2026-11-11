@@ -1,0 +1,10 @@
+{
+  "prebuilt/aarch64/adsprpcd": "8cda388ac53e4d7452fca1b336df332745b58809545022f087149374d46f214c",
+  "prebuilt/aarch64/libuno_backend.so": "b4add73b63fd928c2b401a905df9234cca83665af9d8e1ec15009786cf216b67",
+  "prebuilt/aarch64/libadsprpc.so.1": "82bf9dd8cb7413caf3011aa04c48e9361b395f92139ef2b13fefbe7f6397d781",
+  "prebuilt/aarch64/libadsp_default_listener.so": "193aa1c14e4cbef0b398b12f63709ca903124dcc659043927ad0715ec0859ce4",
+  "prebuilt/hexagon-v66/libuno_graph.so": "350faa772f548cf8cfeab89ec3b3f8c831ffdac51b98406945847a4ac440387b",
+  "models/yolo26n.pt": "9b09cc8bf347f0fc8a5f7657480587f25db09b34bf33b0652110fb03a8ad4fef",
+  "models/mobilenetv4-small.uqmodel": "85ed773cddd3459127a022dbf63f4965f97a29708acc83b23570331988e73093",
+  "models/yolo26n-320.uqmodel": "ceeea2e27f5e8919d514c8fc9a85c327fbfd31ea601a4de06089d32fe663074b"
+}

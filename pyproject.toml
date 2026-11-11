@@ -1,0 +1,22 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "unoq-dsp"
+version = "0.1.0rc1"
+readme = "README.md"
+license = {file = "LICENSE"}
+description = "INT8 image inference for the Arduino UNO Q ADSP"
+requires-python = ">=3.10"
+dependencies = ["numpy>=1.24,<3", "flatbuffers>=24.3.25", "tflite==2.18.0"]
+
+[project.optional-dependencies]
+compiler = ["ai-edge-litert==2.3.0"]
+vision = ["Pillow>=10,<14", "opencv-python-headless>=4.10,<5"]
+
+[project.scripts]
+unoq-dsp = "unoq_dsp.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]

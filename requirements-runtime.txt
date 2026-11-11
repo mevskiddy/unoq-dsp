@@ -1,0 +1,6 @@
+# Versions used for the clean UNO Q release verification (Python 3.13).
+numpy==2.5.4
+flatbuffers==25.12.19
+tflite==2.18.0
+Pillow==13.0.0
+opencv-python-headless==4.14.0.94

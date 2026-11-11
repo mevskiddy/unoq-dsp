@@ -1,0 +1,14 @@
+[
+  {
+    "file": "mobilenetv4-small.uqmodel",
+    "sha256": "85ed773cddd3459127a022dbf63f4965f97a29708acc83b23570331988e73093",
+    "source": "https://huggingface.co/timm/mobilenetv4_conv_small.e2400_r224_in1k",
+    "license": "Apache-2.0"
+  },
+  {
+    "file": "yolo26n-320.uqmodel",
+    "sha256": "ceeea2e27f5e8919d514c8fc9a85c327fbfd31ea601a4de06089d32fe663074b",
+    "source": "https://github.com/ultralytics/ultralytics",
+    "license": "AGPL-3.0"
+  }
+]
